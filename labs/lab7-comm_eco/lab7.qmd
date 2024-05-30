@@ -1,0 +1,180 @@
+---
+title: "Lab 7 - Community Ecology"
+author: "Rilquer Mascarenhas"
+format: html
+editor: visual
+---
+
+> #### Learning goals
+>
+> -   Cleaning data utilizing the `tidyverse` package
+>
+> ##### Data required
+>
+> ##### Packages utilized
+>
+> `tidyverse`
+
+## Community Ecology of Pokémon Go
+
+Community ecology seeks to: 1) document patterns in communities; and 2) understand the processes that cause those patterns. In ecology, “communities” are regarded as groups of interacting species. In order to study communities a scientist must first characterize them: How many species are there? Which species are common and which are rare? Are some species “patchy” in their distribution where they are common in one small area and rare elsewhere?
+
+**Again…Why Pokémon?**
+
+Many aspects of the smart-phone game Pokémon Go mimic real properties of organisms and communities.
+
+-   “Species” of Pokémon vary in abundance in space and time. Pokémon species can be common one week but rare the next week. Similarly, some Pokémon species are abundant in one particular area but rare elsewhere. This imitates real organisms in nature. For example, many plant-feeding insects are only found near the host plants that they eat as larvae. After they emerge as adults, the insects may live only a few days or weeks while they find a mate, lay eggs, then die.
+
+-   Some species of Pokémon are (usually) endemic to particular geographic regions. For example, Kangaskhan, which looks like a horned kangaroo, is only found in Australasia. Tauros, which resembles a three-tailed bison, is only found in the United States. Corsola resembles coral and is found world-wide, but only at the tropical and subtropical latitudes where hard corals can grow.
+
+-   Occasionally, Pokémon show habitat preferences. For example, water type Pokémon are encountered more frequently along waterways, and electric type Pokémon are supposedly more common near power substations. Perhaps it’s no accident that Rattatas (which look like rats) are incredibly common everywhere in New York City.
+
+-   Within a species, individuals vary in height, weight, combat power (CP), and hit points (HP).
+
+-   Each individual Pokémon exists in two-dimensional space, and one must “go into the field” (e.g., walk around the neighborhood) in order to observe and catch them.
+
+Thus, the ecology of Pokémon Go simulates real biological communities, and we can therefore use Pokémon Go to learn the techniques that real ecologists use to study biological communities in nature.
+
+Moreover, there are at least two distinct advantages of using Pokémon Go over having students sample species in a real biological community. First, the only specialized equipment needed is a smart phone, which most students already own. No need for insect nets, diameter tapes, or small mammal live traps. Secondly, Pokémon come already identified. Many students lack the experience to identify multiple species of wild birds, trees, or insects. While knowing how to identify organisms is a useful skill, this takes time and patience, and is not the focus of the general principles of community ecology we want you to learn in this activity.
+
+Note that Pokémon evolution is biologically unrealistic and embodies the misunderstandings that creationists often have (e.g., that an extant species can evolve into another extant species).
+
+### 1. Sampling species in communities
+
+In order to estimate the number of species in a community along with the abundance of each species, it is imperative that samples are standardized. As you will see in subsequent portions of this lab activity, it is essential that the focal community (Pokémon) be sampled in units that are standardized and comparable. If you were to walk around one block in Queens in 15 minutes catching Pokémon, then walk the full length of Broadway in Manhattan over the course of hours (catching Pokémon the whole time), you might conclude without justification that Pokémon are more diverse in Manhattan than in Queens. However, these samples are not comparable because neither time nor distance was standardized.
+
+In Lab 1, you were asked to do the following:
+
+*You will need to sample (capture) Pokémon using the Pokémon Go smartphone app following a standardized sampling protocol.*
+
+1.  Download the Pokémon Go app and create a profile. If you already have a profile, please create a new one so that all members of the course are starting at the same level.
+
+2.  Select a street near your home where you feel safe walking with your face mask on. During daylight hours, set a timer on your phone for 10 minutes. As soon as the timer starts, open the app and begin walking at your normal pace in a straight line down the sidewalk of the street or avenue. As you walk, attempt to capture every Pokémon you see, pausing if necessary to avoid leaving any behind. Be careful to avoid walking into traffic or other pedestrians.
+
+3.  When the timer goes off, immediately set another 10-minute timer, walk over one block, and walk back toward your home on a different street or avenue, catching Pokémon the whole way, as you did before. When the timer goes off again, stop.
+
+4.  When you get home, you will need to enter data on your Pokémon into the course database. This only applies to the Pokémon you caught during your timed, 20-minute transect. Open the app, tap the Pokéball icon near the bottom, then the POKEMON icon to the left. Click on the icon in the lower, right-hand corner, and sort by “RECENT” if necessary. Click on each Pokémon and record all relevant data from each into [this spreadsheet](https://docs.google.com/spreadsheets/d/1wopp7Z5WGmZuqWhjedQpUqN_SGDSy9dtxoGNec7QcDs/edit?usp=sharing)
+
+5.  Be careful not to delete any else’s data! In the video linked above where I explain the rationale for the lab, I mention catching 20 Pokémon. Ignore that instruction. The protocol described above is a standardized transect. By following these instructions and standardizing each Pokémon sampling event by limiting it to 20 minutes without retracing the same path, we will be able to conduct a variety of statistics on the data that you collect. Have fun!
+
+This protocol standardizes sampling time so that we can compare one sample to another. It is unlikely that any two samples will be the same, as there seems to be some degree of chance involved in the appearance of Pokémon. However, when we apply a statistical approach to analyzing the samples, we can draw some general principles. Quadrats (a grid, often 1m2), transects (a path along which samples are collected, often of a standard length), and plots (a large area of standardized size in which a census is taken) are methods of standardizing samples so they can be compared statistically.
+
+### 2. Cleaning the data
+
+By this point, each class member will have walked their timed transect and added their data to the course’s datasheet. Everyone has surely tried their best, but whenever data are entered into a spreadsheet or database, there is the possibility of error. The more data points there are and the more people who work on a databasing effort, the higher the possibility of errors. It is very possible that we will look at our dataset and find different spelling for the same Pokémon species. For instance, we can look at our dataset and find the names “Rattata”, “ratata” or “ Ratatta”; we can easily see that the last two are misspellings of the first, correct name. Additionally, the second name starts with a lower-case `r` instead of upper-case. Depending on the programs we use later on to analyze our data, these different spelling will not be recognized as the same entity and will be treated as three different Pokémon species, which would be incorrect. Since characterizing our community depends on correctly identifying and counting the individuals we collected, some data cleaning is necessary before we move to analysis.
+
+Data cleaning can be a time-consuming step. Here, we will use the skills we acquired in the previous lab and use some functions in the `tidyverse` package to clean our dataset within the R environment. Although you will work in small groups for this exercise, **each person should do all of the activities themselves,** but please ask your classmates for help if you get stuck. If you’re all stumped, be sure to ask your lab instructor.
+
+#### 2.1 Downloading and importing the dataset
+
+First things first: download the file course's datashet with the Pokémon dataset. On Google Sheets, make sure you are on the *Data* tab, then navigate to File \> Download \> Comma Separated Values (.csv). Create a folder in your computer named "Lab 7" to store this file. Name the file `pokemon_dataset.csv`.
+
+We will also need the data in the second tab of the datasheet, named *Pokémon_List*. That tab contains a list of all Pokémon species currently available in GO along with their type(s). Click on that tab and follow the same steps above to download the CSV file to same folder you created. Name this new file `pokemon_list.csv`.
+
+Now, let's move to RStudio and start cleaning our dataset. At this point, we will create a new R project for this lab, as we will do for every future lab session. Creating a project is [a good practice in R](https://rfortherestofus.com/2022/10/rstudio-projects) because it keeps your files and analyses for each lab organized, avoiding mixing up different R scritps, different input files and, most importantly, different versions of the same dataset. It also allows for reproducibility, meaning you will be able to better follow the lab again in a future time. To create a project, navigate to the top left of the screen and go to File \> New Project. In the next window, select the option Existing Directory and navigate to the location on your computer of the folder you just created, containing the the two CSV files we will need for this lab. Click on Create Project.
+
+Another good practice in R is to always create a new script to store and keep track of all the code you have used in a project. Just typing code in the console means it will be very hard to look back through what you did after you have done a lot. In RStudio, go to File \> New File \> R Script. This will open an empty text editor within R, named `Untitled1`. This file is not saved, so we will go ahead and save it by goint to File \> Save. Choose the same folder we have been using so far and name the file "Lab 7".
+
+Now we can start writing our code in the script and running it step by step by pressing `Cmnd + Enter` (Mac) or `Ctrl + Enter` (Windows/Linux). Start by loading the `tidyverse` package using the `library` function.
+
+```{r message=FALSE,warning=FALSE}
+library(tidyverse)
+```
+
+Then read the CSV file with the Pokémon data using the `read_csv()` function. We'll store it to an object called `pokemon_dataset`.
+
+```{r message=FALSE,warning=FALSE}
+pokemon_dataset <- read_csv("pokemon_dataset.csv")
+```
+
+We can call this object to take a quick look at the data...
+
+```{r message=FALSE,warning=FALSE}
+pokemon_dataset
+```
+
+...and we can use the function `glimpse()` to look at what columns exist in this dataset.
+
+```{r}
+glimpse(pokemon_dataset)
+```
+
+> Question: how many Pokemon individuals are recorded in this dataset?
+
+#### 2.2 Correcting letter case
+
+We can take a quick look at the list of Pokemon names we have here to visualize any possible errors. A fast way to do this is using the function `unique()`, which will return a list of all the values in a vector, with each individual values showing up just once (i.e, removing duplicates). This is a quick way of checking what names R is interpreting to be different entities. We can then use the function `unique()` around the column that has all Pokemon names. To make our visualization easier, we can further sort that list of unique names in alphabetic order (instead of the order they appear in the dataset). This way, any misspellings will be grouped together. We will use the function `sort()` for that goal, wrapping it around the function `unique()`
+
+```{r}
+sort(unique(pokemon_dataset$pokemon_name))
+```
+
+> Question: what misspellings can you spot from this list?
+
+The main data entry errors we find in our dataset are 1) having the same entity spelled with lower and upper case initial letters in different instances; 2) misspellings of the correct name. We can solve the first of these problems by simply choosing to convert all first letters to either upper case or lower case. Any names that differ only on the case of the first letter will then collapse into one of the two options and be treated as the same entity from now on. There is one useful function in `tidyverse` that can be used for that purpose: `str_to_title()`. This function will convert the first letter of all words in a vector to upper case. We can then use that function with `mutate()` to modify the contents of the column `pokemon_name` in our dataset.
+
+**Remember:** we first call our object and pipe it using `%>%` into `mutate()`, which will then modify the column inside that object. All this is saved back into the object `pokemon_dataset`.
+
+```{r}
+pokemon_dataset <- pokemon_dataset %>% mutate(pokemon_name = str_to_title(pokemon_name))
+```
+
+Now we can use `sort()` and `unique()` again for a quick look and see if the errors were gone:
+
+```{r}
+sort(unique(pokemon_dataset$pokemon_name))
+```
+
+#### 2.3 Identifying mispellings with logical operators
+
+From the previous code, we can see some of our errors are gone, but we still have some misspelling that make R identify the same name as two different names. To correct that, we need to 1) find out what names in our dataset are misspelled; 2) identify the correct misspelling; 3) replace the wrong misspelling with the correct misspelling. We briefly went over a similar exercise in the previous lab, where we used `mutate()` to correct a misspelling for the name of a Borough. Here, we will learn a way to provide a list of all misspellings and their correct counterparts so R can automatically correct all errors in our dataset.
+
+First, let's find out what names are mispelled. We can do that by comparing the names on our dataset to the names in the official list of Pokémon species in Pokémon GO, which we also downloaded as a file. We will ask R: what names in our dataset **ARE NOT** present in the official list? To do so, we first import the official list:
+
+```{r}
+pokemon_list <- read_csv('pokemon_list.csv')
+```
+
+To ask our question, we will need to utilize two logical operators: `%in%` (the **IN** operator) and `!` (the **NOT** operator). The `%in%` operator is used between two vectors, e.g., `A %in% B`, and is used to ask R: "What elements of A are present in B?". The result returned by R is a vector of logical values (`TRUE` or `FALSE`) informing whether a specific element in A is present somewhere in B.
+
+We can exemplify the use of this operator by first asking "what names in our dataset are in the official list?". We can do so by typing:
+
+```{r}
+pokemon_dataset$pokemon_name %in% pokemon_list$Pokemon
+```
+
+You can see this returns a long list of `TRUE` and `FALSE` values. Most of them are `TRUE` meaning most of our names are correct. Any instances of `FALSE` represent the names that are not in the official list and, we assume, misspelled.
+
+We can then use the `!` operator to ask the *opposite* of the question above: "what names in our dataset **ARE NOT** in the official list?"
+
+```{r}
+!(pokemon_dataset$pokemon_name %in% pokemon_list$Pokemon)
+```
+
+You can see now that most of the values returning are `FALSE` with a few values being `TRUE`. This is essentially the opposite of the vector from the previous code: now the `TRUE` values represent the names that **ARE NOT** in the official list (i.e., they represent the names that match the condition you asked for).
+
+To better visualize what names are matching our condition, we can use the function `which()`. This function will return the positions in any vector that translate to the logical value `TRUE`. If we apply this to the code above, we will be presented with a vector of numbers indicating what elements correspond to `TRUE`. We will save this vector of numbers as `pos` (for *positions*).
+
+```{r}
+pos <- which(!(pokemon_dataset$pokemon_name %in% pokemon_list$Pokemon))
+```
+
+Okay, we are getting closer. Now we have a list of the positions in our dataset where names are misspelled (i.e., they don't match the official list). We can use these positions to check the actual names by calling the actual column where the names are stored; but, instead of calling the whole vector, we want to filter the vector based on these positions, i.e., based on the elements that we know to be misspelled. We can do so by using brackets `[]` to subset a vector. For instance, if `pokemon_dataset$pokemon_name` is the vector of names in our dataset (i.e., essentially the column where our names are), we could use `pokemon_dataset$pokemon_name[1]` to retrieve the first element of that vector (which is the name in the first row). So, if we type...
+
+```{r}
+pokemon_dataset$pokemon_name[pos]
+```
+
+...we are presented with the names that do not match the official list.
+
+#### 2.4 Correcting mispellings with `case_when()`
+
+> Checking the correct spelling of the names
+
+> Create vectors of the wrong spelling
+
+> Use `case_when`
+
+> Ask them to do the same for Boroughs
+
+#### Calculating Diversity indices

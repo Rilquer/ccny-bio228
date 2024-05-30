@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.554">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Rilquer Mascarenhas">
+
+<title>BIO228 at CCNY - Lab 7 - Community Ecology</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">BIO228 at CCNY</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-r-labs" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">R Labs</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-r-labs">    
+        <li class="dropdown-header">./labs/lab06.qmd</li>
+        <li>
+    <a class="dropdown-item" href="../../labs/lab7-comm_eco/lab7.html">
+ <span class="dropdown-text">Lab 7 - Community Ecology</span></a>
+  </li>  
+        <li class="dropdown-header">./labs/lab12.qmd</li>
+        <li class="dropdown-header">./labs/lab13.qmd</li>
+    </ul>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#community-ecology-of-pokémon-go" id="toc-community-ecology-of-pokémon-go" class="nav-link active" data-scroll-target="#community-ecology-of-pokémon-go">Community Ecology of Pokémon Go</a>
+  <ul class="collapse">
+  <li><a href="#sampling-species-in-communities" id="toc-sampling-species-in-communities" class="nav-link" data-scroll-target="#sampling-species-in-communities">1. Sampling species in communities</a></li>
+  <li><a href="#cleaning-the-data" id="toc-cleaning-the-data" class="nav-link" data-scroll-target="#cleaning-the-data">2. Cleaning the data</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Lab 7 - Community Ecology</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Rilquer Mascarenhas </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<blockquote class="blockquote">
+<h4 id="learning-goals" class="anchored">Learning goals</h4>
+<ul>
+<li>Cleaning data utilizing the <code>tidyverse</code> package</li>
+</ul>
+<h5 id="data-required" class="anchored">Data required</h5>
+<h5 id="packages-utilized" class="anchored">Packages utilized</h5>
+<p><code>tidyverse</code></p>
+</blockquote>
+<section id="community-ecology-of-pokémon-go" class="level2">
+<h2 class="anchored" data-anchor-id="community-ecology-of-pokémon-go">Community Ecology of Pokémon Go</h2>
+<p>Community ecology seeks to: 1) document patterns in communities; and 2) understand the processes that cause those patterns. In ecology, “communities” are regarded as groups of interacting species. In order to study communities a scientist must first characterize them: How many species are there? Which species are common and which are rare? Are some species “patchy” in their distribution where they are common in one small area and rare elsewhere?</p>
+<p><strong>Again…Why Pokémon?</strong></p>
+<p>Many aspects of the smart-phone game Pokémon Go mimic real properties of organisms and communities.</p>
+<ul>
+<li><p>“Species” of Pokémon vary in abundance in space and time. Pokémon species can be common one week but rare the next week. Similarly, some Pokémon species are abundant in one particular area but rare elsewhere. This imitates real organisms in nature. For example, many plant-feeding insects are only found near the host plants that they eat as larvae. After they emerge as adults, the insects may live only a few days or weeks while they find a mate, lay eggs, then die.</p></li>
+<li><p>Some species of Pokémon are (usually) endemic to particular geographic regions. For example, Kangaskhan, which looks like a horned kangaroo, is only found in Australasia. Tauros, which resembles a three-tailed bison, is only found in the United States. Corsola resembles coral and is found world-wide, but only at the tropical and subtropical latitudes where hard corals can grow.</p></li>
+<li><p>Occasionally, Pokémon show habitat preferences. For example, water type Pokémon are encountered more frequently along waterways, and electric type Pokémon are supposedly more common near power substations. Perhaps it’s no accident that Rattatas (which look like rats) are incredibly common everywhere in New York City.</p></li>
+<li><p>Within a species, individuals vary in height, weight, combat power (CP), and hit points (HP).</p></li>
+<li><p>Each individual Pokémon exists in two-dimensional space, and one must “go into the field” (e.g., walk around the neighborhood) in order to observe and catch them.</p></li>
+</ul>
+<p>Thus, the ecology of Pokémon Go simulates real biological communities, and we can therefore use Pokémon Go to learn the techniques that real ecologists use to study biological communities in nature.</p>
+<p>Moreover, there are at least two distinct advantages of using Pokémon Go over having students sample species in a real biological community. First, the only specialized equipment needed is a smart phone, which most students already own. No need for insect nets, diameter tapes, or small mammal live traps. Secondly, Pokémon come already identified. Many students lack the experience to identify multiple species of wild birds, trees, or insects. While knowing how to identify organisms is a useful skill, this takes time and patience, and is not the focus of the general principles of community ecology we want you to learn in this activity.</p>
+<p>Note that Pokémon evolution is biologically unrealistic and embodies the misunderstandings that creationists often have (e.g., that an extant species can evolve into another extant species).</p>
+<section id="sampling-species-in-communities" class="level3">
+<h3 class="anchored" data-anchor-id="sampling-species-in-communities">1. Sampling species in communities</h3>
+<p>In order to estimate the number of species in a community along with the abundance of each species, it is imperative that samples are standardized. As you will see in subsequent portions of this lab activity, it is essential that the focal community (Pokémon) be sampled in units that are standardized and comparable. If you were to walk around one block in Queens in 15 minutes catching Pokémon, then walk the full length of Broadway in Manhattan over the course of hours (catching Pokémon the whole time), you might conclude without justification that Pokémon are more diverse in Manhattan than in Queens. However, these samples are not comparable because neither time nor distance was standardized.</p>
+<p>In Lab 1, you were asked to do the following:</p>
+<p><em>You will need to sample (capture) Pokémon using the Pokémon Go smartphone app following a standardized sampling protocol.</em></p>
+<ol type="1">
+<li><p>Download the Pokémon Go app and create a profile. If you already have a profile, please create a new one so that all members of the course are starting at the same level.</p></li>
+<li><p>Select a street near your home where you feel safe walking with your face mask on. During daylight hours, set a timer on your phone for 10 minutes. As soon as the timer starts, open the app and begin walking at your normal pace in a straight line down the sidewalk of the street or avenue. As you walk, attempt to capture every Pokémon you see, pausing if necessary to avoid leaving any behind. Be careful to avoid walking into traffic or other pedestrians.</p></li>
+<li><p>When the timer goes off, immediately set another 10-minute timer, walk over one block, and walk back toward your home on a different street or avenue, catching Pokémon the whole way, as you did before. When the timer goes off again, stop.</p></li>
+<li><p>When you get home, you will need to enter data on your Pokémon into the course database. This only applies to the Pokémon you caught during your timed, 20-minute transect. Open the app, tap the Pokéball icon near the bottom, then the POKEMON icon to the left. Click on the icon in the lower, right-hand corner, and sort by “RECENT” if necessary. Click on each Pokémon and record all relevant data from each into <a href="https://docs.google.com/spreadsheets/d/1wopp7Z5WGmZuqWhjedQpUqN_SGDSy9dtxoGNec7QcDs/edit?usp=sharing">this spreadsheet</a></p></li>
+<li><p>Be careful not to delete any else’s data! In the video linked above where I explain the rationale for the lab, I mention catching 20 Pokémon. Ignore that instruction. The protocol described above is a standardized transect. By following these instructions and standardizing each Pokémon sampling event by limiting it to 20 minutes without retracing the same path, we will be able to conduct a variety of statistics on the data that you collect. Have fun!</p></li>
+</ol>
+<p>This protocol standardizes sampling time so that we can compare one sample to another. It is unlikely that any two samples will be the same, as there seems to be some degree of chance involved in the appearance of Pokémon. However, when we apply a statistical approach to analyzing the samples, we can draw some general principles. Quadrats (a grid, often 1m2), transects (a path along which samples are collected, often of a standard length), and plots (a large area of standardized size in which a census is taken) are methods of standardizing samples so they can be compared statistically.</p>
+</section>
+<section id="cleaning-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="cleaning-the-data">2. Cleaning the data</h3>
+<p>By this point, each class member will have walked their timed transect and added their data to the course’s datasheet. Everyone has surely tried their best, but whenever data are entered into a spreadsheet or database, there is the possibility of error. The more data points there are and the more people who work on a databasing effort, the higher the possibility of errors. It is very possible that we will look at our dataset and find different spelling for the same Pokémon species. For instance, we can look at our dataset and find the names “Rattata”, “ratata” or “ Ratatta”; we can easily see that the last two are misspellings of the first, correct name. Additionally, the second name starts with a lower-case <code>r</code> instead of upper-case. Depending on the programs we use later on to analyze our data, these different spelling will not be recognized as the same entity and will be treated as three different Pokémon species, which would be incorrect. Since characterizing our community depends on correctly identifying and counting the individuals we collected, some data cleaning is necessary before we move to analysis.</p>
+<p>Data cleaning can be a time-consuming step. Here, we will use the skills we acquired in the previous lab and use some functions in the <code>tidyverse</code> package to clean our dataset within the R environment. Although you will work in small groups for this exercise, <strong>each person should do all of the activities themselves,</strong> but please ask your classmates for help if you get stuck. If you’re all stumped, be sure to ask your lab instructor.</p>
+<section id="downloading-and-importing-the-dataset" class="level4">
+<h4 class="anchored" data-anchor-id="downloading-and-importing-the-dataset">2.1 Downloading and importing the dataset</h4>
+<p>First things first: download the file course’s datashet with the Pokémon dataset. On Google Sheets, make sure you are on the <em>Data</em> tab, then navigate to File &gt; Download &gt; Comma Separated Values (.csv). Create a folder in your computer named “Lab 7” to store this file. Name the file <code>pokemon_dataset.csv</code>.</p>
+<p>We will also need the data in the second tab of the datasheet, named <em>Pokémon_List</em>. That tab contains a list of all Pokémon species currently available in GO along with their type(s). Click on that tab and follow the same steps above to download the CSV file to same folder you created. Name this new file <code>pokemon_list.csv</code>.</p>
+<p>Now, let’s move to RStudio and start cleaning our dataset. At this point, we will create a new R project for this lab, as we will do for every future lab session. Creating a project is <a href="https://rfortherestofus.com/2022/10/rstudio-projects">a good practice in R</a> because it keeps your files and analyses for each lab organized, avoiding mixing up different R scritps, different input files and, most importantly, different versions of the same dataset. It also allows for reproducibility, meaning you will be able to better follow the lab again in a future time. To create a project, navigate to the top left of the screen and go to File &gt; New Project. In the next window, select the option Existing Directory and navigate to the location on your computer of the folder you just created, containing the the two CSV files we will need for this lab. Click on Create Project.</p>
+<p>Another good practice in R is to always create a new script to store and keep track of all the code you have used in a project. Just typing code in the console means it will be very hard to look back through what you did after you have done a lot. In RStudio, go to File &gt; New File &gt; R Script. This will open an empty text editor within R, named <code>Untitled1</code>. This file is not saved, so we will go ahead and save it by goint to File &gt; Save. Choose the same folder we have been using so far and name the file “Lab 7”.</p>
+<p>Now we can start writing our code in the script and running it step by step by pressing <code>Cmnd + Enter</code> (Mac) or <code>Ctrl + Enter</code> (Windows/Linux). Start by loading the <code>tidyverse</code> package using the <code>library</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Then read the CSV file with the Pokémon data using the <code>read_csv()</code> function. We’ll store it to an object called <code>pokemon_dataset</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pokemon_dataset <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"pokemon_dataset.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can call this object to take a quick look at the data…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>pokemon_dataset</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 797 × 12
+   section   emplid borough  weather pokemon_name combat_power_CP hit_points_HP
+   &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;                   &lt;dbl&gt;
+ 1 1EG     13155987 Brooklyn Rainy   Joltik       42                         23
+ 2 1EG     13155987 Brooklyn Rainy   Stufful      242                        64
+ 3 1EG     13155987 Brooklyn Rainy   Seedot       10                         11
+ 4 1EG     13155987 Brooklyn Rainy   Voltorb      86                         32
+ 5 1EG     13155987 Brooklyn Rainy   Tentacool    187                        44
+ 6 1EG     13155987 Brooklyn Rainy   Machop       290                        73
+ 7 1EG     13155987 Brooklyn Rainy   Dedenne      279                        56
+ 8 1EG     13155987 Brooklyn Rainy   Inkay        11                         14
+ 9 1EG     13155987 Brooklyn Rainy   Makuhita     116                        57
+10 1EG     13155987 Brooklyn Rainy   Ekans        239                        50
+# ℹ 787 more rows
+# ℹ 5 more variables: weight_kg &lt;chr&gt;, type_1 &lt;chr&gt;, type_2 &lt;chr&gt;,
+#   height_m &lt;dbl&gt;, location_caught &lt;chr&gt;</code></pre>
+</div>
+</div>
+<p>…and we can use the function <code>glimpse()</code> to look at what columns exist in this dataset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(pokemon_dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 797
+Columns: 12
+$ section         &lt;chr&gt; "1EG", "1EG", "1EG", "1EG", "1EG", "1EG", "1EG", "1EG"…
+$ emplid          &lt;dbl&gt; 13155987, 13155987, 13155987, 13155987, 13155987, 1315…
+$ borough         &lt;chr&gt; "Brooklyn", "Brooklyn", "Brooklyn", "Brooklyn", "Brook…
+$ weather         &lt;chr&gt; "Rainy", "Rainy", "Rainy", "Rainy", "Rainy", "Rainy", …
+$ pokemon_name    &lt;chr&gt; "Joltik", "Stufful", "Seedot", "Voltorb", "Tentacool",…
+$ combat_power_CP &lt;chr&gt; "42", "242", "10", "86", "187", "290", "279", "11", "1…
+$ hit_points_HP   &lt;dbl&gt; 23, 64, 11, 32, 44, 73, 56, 14, 57, 50, 34, 34, 19, 30…
+$ weight_kg       &lt;chr&gt; "0.23", "6.25", "4.3.", "13.69", "49.67", "22.04", "2.…
+$ type_1          &lt;chr&gt; "Bug", "Normal", "Grass", "Grass", "Water", "Fighting"…
+$ type_2          &lt;chr&gt; "Electric", "Fighting", "N/A", "Grass", "Poison", "N/A…
+$ height_m        &lt;dbl&gt; 0.08, 0.47, 0.54, 0.50, 0.89, 0.86, 0.19, 0.40, 1.00, …
+$ location_caught &lt;chr&gt; "Brooklyn, NY, USA", "Brooklyn, NY, USA", "Brooklyn, N…</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Question: how many Pokemon individuals are recorded in this dataset?</p>
+</blockquote>
+</section>
+<section id="correcting-letter-case" class="level4">
+<h4 class="anchored" data-anchor-id="correcting-letter-case">2.2 Correcting letter case</h4>
+<p>We can take a quick look at the list of Pokemon names we have here to visualize any possible errors. A fast way to do this is using the function <code>unique()</code>, which will return a list of all the values in a vector, with each individual values showing up just once (i.e, removing duplicates). This is a quick way of checking what names R is interpreting to be different entities. We can then use the function <code>unique()</code> around the column that has all Pokemon names. To make our visualization easier, we can further sort that list of unique names in alphabetic order (instead of the order they appear in the dataset). This way, any misspellings will be grouped together. We will use the function <code>sort()</code> for that goal, wrapping it around the function <code>unique()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(pokemon_dataset<span class="sc">$</span>pokemon_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "abra"        "Abra"        "Aipom"       "Ampharos"    "Anorith"    
+  [6] "archen"      "Aron"        "Barboach"    "Bellsprout"  "bidoof"     
+ [11] "Bidoof"      "Blitzle"     "Bouffalant"  "Bronzor"     "Bulbasaur"  
+ [16] "Bulbasur"    "Buneary"     "Bunnelby"    "Burmy"       "Cacnea"     
+ [21] "Carvanha"    "Castform"    "charmander"  "Charmander"  "Chespin"    
+ [26] "Chikorita"   "Chinchou"    "combee"      "Combee"      "Cosmog"     
+ [31] "Cottonee"    "Croagunk"    "Croconaw"    "Cubone"      "Cyndaquil"  
+ [36] "Dedenne"     "Deerling"    "Dewpider"    "Diglett"     "Ditto"      
+ [41] "Doduo"       "Drifblim"    "Drifloon"    "Drilbur"     "Drownzee"   
+ [46] "Drowsy"      "drowzee"     "Drowzee"     "Ducklett"    "Dunsparce"  
+ [51] "Duskull"     "Dweeble"     "Eevee"       "Ekans"       "Eknas"      
+ [56] "Electabuzz"  "Electrike"   "elgyem"      "Elgyem"      "evee"       
+ [61] "Fearow"      "Flaaffy"     "Fletchinder" "Fletching"   "Fletchling" 
+ [66] "Flethchling" "Foongus"     "Froakie"     "Geodude"     "Girafarig"  
+ [71] "glameow"     "Glameow"     "Gligar"      "Goldeen"     "Gothia"     
+ [76] "gothita"     "Gothita"     "Grimer"      "Grotle"      "Grovyle"    
+ [81] "Growlithe"   "Haunter"     "Helioptile"  "Hippopotas"  "Hitmonchan" 
+ [86] "Hitmontop"   "Hoothoot"    "hoppip"      "Hoppip"      "Horsea"     
+ [91] "Inkay"       "Jigglypuff"  "Jolteon"     "Joltik"      "Kadabra"    
+ [96] "Kakuna"      "Karrablast"  "kirlia"      "Kirlia"      "Koffing"    
+[101] "Koffling"    "krabby"      "Krabby"      "Kricketot"   "Lairon"     
+[106] "Lanturn"     "Larvitar"    "Ledian"      "Ledyba"      "Lileep"     
+[111] "Lillipup"    "Linoone"     "Litwick"     "Lotad"       "Lunatone"   
+[116] "Machop"      "Magikarp"    "Magnemite"   "Makuhita"    "Mareep"     
+[121] "Maril"       "Meditite"    "Meowth"      "Miltank"     "Minccino"   
+[126] "Mudkip"      "Munna"       "natu"        "Natu"        "Nidoran"    
+[131] "Numel"       "Oddish"      "Panpour"     "Petilil"     "Phanpy"     
+[136] "Pidgeotto"   "Pidove"      "Pikachu"     "Pikipek"     "Pinsir"     
+[141] "Plusle"      "Popplio"     "Porygon"     "Prinplup"    "ralts"      
+[146] "Ralts"       "Rhyhorn"     "Roggenrola"  "Sandshrew"   "Sandslash"  
+[151] "Sceptile"    "Scyther"     "Seadra"      "Seaking"     "Seedot"     
+[156] "Sentret"     "Seviper"     "Sewaddle"    "Sewadle"     "Sharpedo"   
+[161] "Shelmet"     "Shiftry"     "Shinx"       "Shroomish"   "Skitty"     
+[166] "Skorupi"     "Slowpoke"    "Smeargle"    "Snubbul"     "snubbull"   
+[171] "Snubbull"    "Solosis"     "Solrock"     "Spearow"     "spoink"     
+[176] "Spoink"      "Squirtle"    "Stantler"    "Staravia"    "Starly"     
+[181] "Staryu"      "Stufful"     "Stunfisk"    "Stunky"      "sudowood"   
+[186] "sunkern"     "Sunkern"     "Swablu"      "Swinub"      "Tangela"    
+[191] "Tauros"      "Tentacool"   "Throh"       "Torchic"     "Totodile"   
+[196] "Trapinch"    "Turtwig"     "tympole"     "Tynamo"      "Tyrunt"     
+[201] "Voltorb"     "Vulpix"      "Wailmer"     "Weepinbell"  "Weepindell" 
+[206] "Whismur"     "Wimpod"      "Winggull"    "Wingull"     "Woobat"     
+[211] "Wooper"      "Yanma"       "Yungoos"     "zigzagoon"   "Zigzagoon"  </code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p>Question: what misspellings can you spot from this list?</p>
+</blockquote>
+<p>The main data entry errors we find in our dataset are 1) having the same entity spelled with lower and upper case initial letters in different instances; 2) misspellings of the correct name. We can solve the first of these problems by simply choosing to convert all first letters to either upper case or lower case. Any names that differ only on the case of the first letter will then collapse into one of the two options and be treated as the same entity from now on. There is one useful function in <code>tidyverse</code> that can be used for that purpose: <code>str_to_title()</code>. This function will convert the first letter of all words in a vector to upper case. We can then use that function with <code>mutate()</code> to modify the contents of the column <code>pokemon_name</code> in our dataset.</p>
+<p><strong>Remember:</strong> we first call our object and pipe it using <code>%&gt;%</code> into <code>mutate()</code>, which will then modify the column inside that object. All this is saved back into the object <code>pokemon_dataset</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pokemon_dataset <span class="ot">&lt;-</span> pokemon_dataset <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">pokemon_name =</span> <span class="fu">str_to_title</span>(pokemon_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use <code>sort()</code> and <code>unique()</code> again for a quick look and see if the errors were gone:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(pokemon_dataset<span class="sc">$</span>pokemon_name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "Abra"        "Aipom"       "Ampharos"    "Anorith"     "Archen"     
+  [6] "Aron"        "Barboach"    "Bellsprout"  "Bidoof"      "Blitzle"    
+ [11] "Bouffalant"  "Bronzor"     "Bulbasaur"   "Bulbasur"    "Buneary"    
+ [16] "Bunnelby"    "Burmy"       "Cacnea"      "Carvanha"    "Castform"   
+ [21] "Charmander"  "Chespin"     "Chikorita"   "Chinchou"    "Combee"     
+ [26] "Cosmog"      "Cottonee"    "Croagunk"    "Croconaw"    "Cubone"     
+ [31] "Cyndaquil"   "Dedenne"     "Deerling"    "Dewpider"    "Diglett"    
+ [36] "Ditto"       "Doduo"       "Drifblim"    "Drifloon"    "Drilbur"    
+ [41] "Drownzee"    "Drowsy"      "Drowzee"     "Ducklett"    "Dunsparce"  
+ [46] "Duskull"     "Dweeble"     "Eevee"       "Ekans"       "Eknas"      
+ [51] "Electabuzz"  "Electrike"   "Elgyem"      "Evee"        "Fearow"     
+ [56] "Flaaffy"     "Fletchinder" "Fletching"   "Fletchling"  "Flethchling"
+ [61] "Foongus"     "Froakie"     "Geodude"     "Girafarig"   "Glameow"    
+ [66] "Gligar"      "Goldeen"     "Gothia"      "Gothita"     "Grimer"     
+ [71] "Grotle"      "Grovyle"     "Growlithe"   "Haunter"     "Helioptile" 
+ [76] "Hippopotas"  "Hitmonchan"  "Hitmontop"   "Hoothoot"    "Hoppip"     
+ [81] "Horsea"      "Inkay"       "Jigglypuff"  "Jolteon"     "Joltik"     
+ [86] "Kadabra"     "Kakuna"      "Karrablast"  "Kirlia"      "Koffing"    
+ [91] "Koffling"    "Krabby"      "Kricketot"   "Lairon"      "Lanturn"    
+ [96] "Larvitar"    "Ledian"      "Ledyba"      "Lileep"      "Lillipup"   
+[101] "Linoone"     "Litwick"     "Lotad"       "Lunatone"    "Machop"     
+[106] "Magikarp"    "Magnemite"   "Makuhita"    "Mareep"      "Maril"      
+[111] "Meditite"    "Meowth"      "Miltank"     "Minccino"    "Mudkip"     
+[116] "Munna"       "Natu"        "Nidoran"     "Numel"       "Oddish"     
+[121] "Panpour"     "Petilil"     "Phanpy"      "Pidgeotto"   "Pidove"     
+[126] "Pikachu"     "Pikipek"     "Pinsir"      "Plusle"      "Popplio"    
+[131] "Porygon"     "Prinplup"    "Ralts"       "Rhyhorn"     "Roggenrola" 
+[136] "Sandshrew"   "Sandslash"   "Sceptile"    "Scyther"     "Seadra"     
+[141] "Seaking"     "Seedot"      "Sentret"     "Seviper"     "Sewaddle"   
+[146] "Sewadle"     "Sharpedo"    "Shelmet"     "Shiftry"     "Shinx"      
+[151] "Shroomish"   "Skitty"      "Skorupi"     "Slowpoke"    "Smeargle"   
+[156] "Snubbul"     "Snubbull"    "Solosis"     "Solrock"     "Spearow"    
+[161] "Spoink"      "Squirtle"    "Stantler"    "Staravia"    "Starly"     
+[166] "Staryu"      "Stufful"     "Stunfisk"    "Stunky"      "Sudowood"   
+[171] "Sunkern"     "Swablu"      "Swinub"      "Tangela"     "Tauros"     
+[176] "Tentacool"   "Throh"       "Torchic"     "Totodile"    "Trapinch"   
+[181] "Turtwig"     "Tympole"     "Tynamo"      "Tyrunt"      "Voltorb"    
+[186] "Vulpix"      "Wailmer"     "Weepinbell"  "Weepindell"  "Whismur"    
+[191] "Wimpod"      "Winggull"    "Wingull"     "Woobat"      "Wooper"     
+[196] "Yanma"       "Yungoos"     "Zigzagoon"  </code></pre>
+</div>
+</div>
+</section>
+<section id="identifying-mispellings-with-logical-operators" class="level4">
+<h4 class="anchored" data-anchor-id="identifying-mispellings-with-logical-operators">2.3 Identifying mispellings with logical operators</h4>
+<p>From the previous code, we can see some of our errors are gone, but we still have some misspelling that make R identify the same name as two different names. To correct that, we need to 1) find out what names in our dataset are misspelled; 2) identify the correct misspelling; 3) replace the wrong misspelling with the correct misspelling. We briefly went over a similar exercise in the previous lab, where we used <code>mutate()</code> to correct a misspelling for the name of a Borough. Here, we will learn a way to provide a list of all misspellings and their correct counterparts so R can automatically correct all errors in our dataset.</p>
+<p>First, let’s find out what names are mispelled. We can do that by comparing the names on our dataset to the names in the official list of Pokémon species in Pokémon GO, which we also downloaded as a file. We will ask R: what names in our dataset <strong>ARE NOT</strong> present in the official list? To do so, we first import the official list:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>pokemon_list <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'pokemon_list.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1084 Columns: 5
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (4): F, Pokemon, type_1, type_2
+dbl (1): Ndex
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>To ask our question, we will need to utilize two logical operators: <code>%in%</code> (the <strong>IN</strong> operator) and <code>!</code> (the <strong>NOT</strong> operator). The <code>%in%</code> operator is used between two vectors, e.g., <code>A %in% B</code>, and is used to ask R: “What elements of A are present in B?”. The result returned by R is a vector of logical values (<code>TRUE</code> or <code>FALSE</code>) informing whether a specific element in A is present somewhere in B.</p>
+<p>We can exemplify the use of this operator by first asking “what names in our dataset are in the official list?”. We can do so by typing:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pokemon_dataset<span class="sc">$</span>pokemon_name <span class="sc">%in%</span> pokemon_list<span class="sc">$</span>Pokemon</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [13]  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [25]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [49]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [61]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [73]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [85]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+ [97]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[109]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[121]  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[145]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[157]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+[169]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[181]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[193]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[205]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[217]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+[229]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+[241]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[253]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[265]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[277]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE
+[289]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[301]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[313]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[325]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[337]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[349]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[361] FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[373]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[385]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE
+[397]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[409]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+[421]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[433]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[445]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[457]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[469]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[481]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[493]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[505]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[517]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[529]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[541]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[553]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[565]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[577]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+[589]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[601]  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[613]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[625]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[637]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[649]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE
+[661]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[673]  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[685]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[697]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[709]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[721]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[733]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[745]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[757]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[769]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[781]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+[793]  TRUE  TRUE  TRUE FALSE  TRUE</code></pre>
+</div>
+</div>
+<p>You can see this returns a long list of <code>TRUE</code> and <code>FALSE</code> values. Most of them are <code>TRUE</code> meaning most of our names are correct. Any instances of <code>FALSE</code> represent the names that are not in the official list and, we assume, misspelled.</p>
+<p>We can then use the <code>!</code> operator to ask the <em>opposite</em> of the question above: “what names in our dataset <strong>ARE NOT</strong> in the official list?”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">!</span>(pokemon_dataset<span class="sc">$</span>pokemon_name <span class="sc">%in%</span> pokemon_list<span class="sc">$</span>Pokemon)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [13] FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+ [25] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+ [37] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+ [49] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [61] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [73] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [85] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+ [97] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[109] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[121] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[133] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[145] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[157] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[169] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[181] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[193] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[205] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[217] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[229] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[241] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[253] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[265] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[277] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE
+[289] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[301] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[313] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[325] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[337] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[349] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+[361]  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[373] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[385] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE
+[397] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[409] FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE
+[421] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[433] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[445] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[457] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[469] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[481] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[493] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[505] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[517] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[529] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[541] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[553] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[565] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[577] FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE
+[589] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[601] FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+[613] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[625] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[637] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[649] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE
+[661] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[673] FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[685] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[697] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[709] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[721] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[733] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[745] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[757] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[769] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[781] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+[793] FALSE FALSE FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>You can see now that most of the values returning are <code>FALSE</code> with a few values being <code>TRUE</code>. This is essentially the opposite of the vector from the previous code: now the <code>TRUE</code> values represent the names that <strong>ARE NOT</strong> in the official list (i.e., they represent the names that match the condition you asked for).</p>
+<p>To better visualize what names are matching our condition, we can use the function <code>which()</code>. This function will return the positions in any vector that translate to the logical value <code>TRUE</code>. If we apply this to the code above, we will be presented with a vector of numbers indicating what elements correspond to <code>TRUE</code>. We will save this vector of numbers as <code>pos</code> (for <em>positions</em>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>pos <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="sc">!</span>(pokemon_dataset<span class="sc">$</span>pokemon_name <span class="sc">%in%</span> pokemon_list<span class="sc">$</span>Pokemon))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Okay, we are getting closer. Now we have a list of the positions in our dataset where names are misspelled (i.e., they don’t match the official list). We can use these positions to check the actual names by calling the actual column where the names are stored; but, instead of calling the whole vector, we want to filter the vector based on these positions, i.e., based on the elements that we know to be misspelled. We can do so by using brackets <code>[]</code> to subset a vector. For instance, if <code>pokemon_dataset$pokemon_name</code> is the vector of names in our dataset (i.e., essentially the column where our names are), we could use <code>pokemon_dataset$pokemon_name[1]</code> to retrieve the first element of that vector (which is the name in the first row). So, if we type…</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>pokemon_dataset<span class="sc">$</span>pokemon_name[pos]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Nidoran"     "Sewadle"     "Winggull"    "Weepindell"  "Nidoran"    
+ [6] "Flethchling" "Dweeble"     "Koffling"    "Drowsy"      "Gothia"     
+[11] "Sudowood"    "Sudowood"    "Sudowood"    "Fletching"   "Bulbasur"   
+[16] "Drownzee"    "Evee"        "Maril"       "Snubbul"     "Maril"      
+[21] "Eknas"      </code></pre>
+</div>
+</div>
+<p>…we are presented with the names that do not match the official list.</p>
+</section>
+<section id="correcting-mispellings-with-case_when" class="level4">
+<h4 class="anchored" data-anchor-id="correcting-mispellings-with-case_when">2.4 Correcting mispellings with <code>case_when()</code></h4>
+<blockquote class="blockquote">
+<p>Checking the correct spelling of the names</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Create vectors of the wrong spelling</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Use <code>case_when</code></p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Ask them to do the same for Boroughs</p>
+</blockquote>
+</section>
+<section id="calculating-diversity-indices" class="level4">
+<h4 class="anchored" data-anchor-id="calculating-diversity-indices">Calculating Diversity indices</h4>
+
+
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

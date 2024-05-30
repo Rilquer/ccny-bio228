@@ -3,11 +3,19 @@ project:
   output-dir: docs
 
 website:
-  title: "quarto-website"
+  title: "BIO228 at CCNY"
   navbar:
-    left:
+    background: info
+    search: true
+    right:
       - href: index.qmd
         text: Home
+      - text: R Labs
+        menu:
+          - ./labs/lab06.qmd
+          - ./labs/lab7-comm_eco/lab7.qmd
+          - ./labs/lab12.qmd
+          - ./labs/lab13.qmd
       - about.qmd
 
 format:
