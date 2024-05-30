@@ -2,4 +2,4 @@
 title: "BIO228 at CCNY"
 ---
 
-## Website for the R Labs of BIO228 at CCNY
+Website for the R Labs of BIO228 at CCNY
