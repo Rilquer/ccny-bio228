@@ -1,11 +1,5 @@
 ---
-title: "quarto-website"
+title: "BIO228 at CCNY"
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+## Website for the R Labs of BIO228 at CCNY
